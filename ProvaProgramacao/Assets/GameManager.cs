@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,6 +8,7 @@ public class GameManager : MonoBehaviour
     int pontos, teclaAtual;
     float relogio;
     KeyCode[] teclas;
+    Enum TeclasAleatorias
 
     private void Start()
     {
@@ -33,5 +35,16 @@ public class GameManager : MonoBehaviour
 
         ContagemRegressiva();
     }
+    private void ContagemRegressiva()
+    {
+        relogio = relogio - Time.deltaTime;
 
+        UIManager.instance.AtualizarTextos(pontos, relogio);
+
+        if (relogio <= 0)
+        {
+            pontos = pontos - teclas.Length - teclaAtual;
+        }
+        GerarSetas();
+    }
 }
