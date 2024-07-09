@@ -21,10 +21,15 @@ public class UIManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI textoDePontuacao;
 
     [SerializeField] private TextMeshProUGUI textoDoRelogio;
-    
-    
 
-{
-
+    public void Atualizarsetas(KeyCode[] setas)
+    {
+        for (int i = 0; i < imagens.Length; i++) ;
+        {
+            if (i >= setas.Lenght)
+            {
+                imagens[i].sprite = sprites[0];
+            }
+        }
     }
 }
