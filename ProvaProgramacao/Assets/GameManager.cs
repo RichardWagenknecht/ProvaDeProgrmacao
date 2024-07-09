@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro.EditorUtilities;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -8,7 +9,6 @@ public class GameManager : MonoBehaviour
     int pontos, teclaAtual;
     float relogio;
     KeyCode[] teclas;
-    Enum TeclasAleatorias
 
     private void Start()
     {
@@ -46,5 +46,18 @@ public class GameManager : MonoBehaviour
             pontos = pontos - teclas.Length - teclaAtual;
         }
         GerarSetas();
+    }
+    private void GerarSetas()
+    {
+        teclaAtual = 0;
+
+        teclas = new KeyCode[Random.RandomRange(5,15)];
+
+        for (int i = 0; i < teclas.Length; i++)
+        {
+            teclas[i] = (KeyCode)Random.RandomRange(273,276);
+        }
+        relogio = teclas.Length / 2;
+        TMP_UIStyleManager.instance.AtualizarSetas(teclas);
     }
 }
