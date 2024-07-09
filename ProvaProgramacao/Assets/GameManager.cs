@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro.EditorUtilities;
@@ -12,7 +11,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        GerarSeta();
+        GerarSetas();
     }
     private void Update()
     {
@@ -58,6 +57,28 @@ public class GameManager : MonoBehaviour
             teclas[i] = (KeyCode)Random.RandomRange(273,276);
         }
         relogio = teclas.Length / 2;
-        TMP_UIStyleManager.instance.AtualizarSetas(teclas);
+        UIManager.instance.AtualizarSetas(teclas);
+    }
+    private void ChecarTecla(KeyCode teclaPressionada)
+    {
+        if ((int)teclaPressionada == teclaAtual)
+        {
+            pontos++;
+
+            UIManager.instance.AtualizarSeta(teclaAtual, true);
+        }
+        else
+        {
+            pontos--;
+            relogio--;
+
+            UIManager.instance.AtualizarSeta(teclaAtual, false);
+        }
+        UIManager.instance.AtualizarTextos(pontos,relogio);
+
+        if(teclaAtual == teclas.Length)
+        {
+            GerarSetas();
+        }
     }
 }
