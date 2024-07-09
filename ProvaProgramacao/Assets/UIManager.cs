@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class UIManager : MonoBehaviour
@@ -13,10 +14,15 @@ public class UIManager : MonoBehaviour
 
     #endregion 
 
-    [SerializeField] 
-    private Sprite[] sprites;
+    [SerializeField] private Sprite[] sprites;
 
+    [SerializeField] private UnityEngine.UI.Image[] imagens;
 
+    [SerializeField] private TextMeshProUGUI textoDePontuacao;
+
+    [SerializeField] private TextMeshProUGUI textoDoRelogio;
+    
+    
 
 {
 
